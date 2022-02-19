@@ -1,0 +1,14 @@
+{% extends '_base.html' %}
+
+{% block page_title %}حذف کتاب {{ book.title }}{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <h1>"حذف کتاب "{{ book.title }}</h1>
+        <p>آیا از حذف کردن کتاب "{{ book.title }}" مطمئن هستید؟</p>
+        <input type="submit" class="btn btn-danger" value="بله مطمئنم">
+    </form>
+    <br>
+    <a href="{% url 'book_list' %}">لیست همه کتاب‌ها</a>
+{% endblock %}
