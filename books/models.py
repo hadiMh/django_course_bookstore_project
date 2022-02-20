@@ -20,6 +20,8 @@ class Comment(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='comments')
     text = models.TextField()
+    is_active = models.BooleanField(default=True)
+    recommend = models.BooleanField(default=True)
 
     datetime_created = models.DateTimeField(auto_now_add=True)
 
