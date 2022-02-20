@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="container mt-4">
-        <div class="row flex-row-reverse justify-content-md-center">
+        <div class="row flex-row-reverse">
             {% for book in books %}
                 <div class="card m-2" style="max-width: 45%">
                     <div class="row g-0 h-100" dir="rtl">
@@ -15,7 +15,7 @@
                         <div class="col-md-8 h-100">
                             <div class="d-flex flex-column justify-content-between h-100">
                                 <div class="card-body">
-                                    <a href="{{ book.get_absolute_url }}"><h3 class="card-title"><strong>{{ book.title }}</strong></h3></a>
+                                    <a class="text-decoration-none" href="{{ book.get_absolute_url }}"><h3 class="card-title"><strong>{{ book.title }}</strong></h3></a>
                                     <p class="card-text pt-3">{{ book.description|truncatewords:30 }}</p>
                                     <p class="text-muted">نویسنده: {{ book.author }}</p>
                                 </div>

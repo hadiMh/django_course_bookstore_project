@@ -13,6 +13,10 @@
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+    {% block styles %}
+
+    {% endblock %}
+
     <title>{% block page_title %}{% endblock %}</title>
 </head>
 <body>
@@ -20,7 +24,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-info" dir="rtl">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="icons/book.png" alt="" height="30"
+            <img src="{% static 'icons/book.png' %}" alt="" height="30"
                  class="d-inline-block align-text-top">
         </a>
         <a class="navbar-brand mx-3" href="#">کتاب یار</a>
@@ -30,11 +34,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#">خانه</a>
-                <a class="nav-link" href="#">اضافه کردن کتاب</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'book_list' %}">خانه</a>
+                <a class="nav-link" href="{% url 'book_create' %}">اضافه کردن کتاب</a>
             </div>
         </div>
-        <div class="mx-2 text-white">خوش آمدی محمدهادی | <a class="link-light text-decoration-none" href="#">خروج</a>
+        <div class="mx-2 text-white">
+            {% if user.is_authenticated %}
+            خوش آمدی {{ user.username }} | <a class="link-light text-decoration-none" href="{% url 'logout' %}">خروج</a>
+            {% else %}
+                <a class="link-light text-decoration-none" href="{% url 'login' %}">ورود</a>
+                <span> یا </span>
+                <a class="link-light text-decoration-none" href="{% url 'signup' %}">ثبت نام</a>
+            {% endif %}
         </div>
     </div>
 </nav>
